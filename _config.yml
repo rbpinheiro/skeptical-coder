@@ -79,3 +79,4 @@ offline:
 deploy:
   type: git
   repo: git@github.com:rbpinheiro/blog.git
+  branch: ghpages
