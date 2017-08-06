@@ -1,0 +1,19 @@
+menu:
+    Blog: /
+    Archive: /archives/
+    Twitter: http://twitter.com/rbpinheiro
+    GitHub: https://github.com/rbpinheiro
+    Rss: /atom.xml
+
+favicon: /favicon.png
+logo: /favicon.png
+
+# Comment
+# e.g disqus: seansun
+disqus: blog-pq9sn2ksel
+duoshuo:
+cloudTie:
+
+# Analytics
+# google-analytics:
+ga: UA-65933410-1
