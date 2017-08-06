@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rbpinheiro.github.io/2017/08/06/Understanding-objects-in-javascript/</loc>
+    
+    <lastmod>2017-08-06T16:25:12.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rbpinheiro.github.io/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/</loc>
     
     <lastmod>2017-08-06T16:04:23.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://rbpinheiro.github.io/2015/11/14/Why-I-am-an-atheist/</loc>
     
     <lastmod>2017-08-06T04:57:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rbpinheiro.github.io/2017/07/12/Understanding-objects-in-javascript/</loc>
-    
-    <lastmod>2017-08-06T02:57:29.000Z</lastmod>
     
   </url>
   
