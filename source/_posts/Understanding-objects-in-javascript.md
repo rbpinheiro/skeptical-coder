@@ -1,7 +1,11 @@
 ---
 title: Understanding objects in javascript
-date: 2017-07-12 21:24:58
+date: 2017-08-06 13:23:58
 tags:
+  - javascript
+  - object-oriented
+  - prototype
+  - ES6
 ---
 
 I wrote this post for those who are already familiar with object-oriented programming, and the intention is to explain language-especific implementations.
