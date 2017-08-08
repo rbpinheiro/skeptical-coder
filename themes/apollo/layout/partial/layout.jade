@@ -5,8 +5,9 @@ html(lang=config.language)
     body
         .wrap
             header
-                a.logo-link(href=url_for())
-                    img(src=url_for(theme.logo) alt="logo")
+                h1
+                    a.logo-link(href=url_for() title="Rafael Pinheiro")
+                        img(src=url_for(theme.logo) alt="Rafael Pinheiro")
                 include nav
             main.container
                 block container
