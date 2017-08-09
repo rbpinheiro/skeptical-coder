@@ -6,16 +6,9 @@ block site_title
 block description
     - var desc = page.desc || page.title + ' - ' + config.author;
     - var tags = page.tags.data.map(tag => tag.name).join(', ')
-    - var canonical = config.url + config.root + page.path
-    meta(name="description", content=desc)
-    meta(name="keywords", content=tags)
+    - var canonical = config.url + page.path
     meta(name="author", content=config.author)
-    meta(name="og:title", content=page.title)
-    meta(name="og:type", content="article")
-    meta(name="og:description", content=desc)
-    meta(name="twitter:card", content="summary")
-    meta(name="twitter:title", content=page.title)
-    meta(name="twitter:description", content=desc)
+    != open_graph()
     link(rel="canonical", href=canonical)
 
 
