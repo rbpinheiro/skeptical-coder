@@ -5,7 +5,19 @@ block site_title
 
 block description
     - var desc = page.desc || page.title + ' - ' + config.author;
+    - var tags = page.tags.data.map(tag => tag.name).join(', ')
+    - var canonical = config.url + config.root + page.path
     meta(name="description", content=desc)
+    meta(name="keywords", content=tags)
+    meta(name="author", content=config.author)
+    meta(name="og:title", content=page.title)
+    meta(name="og:type", content="article")
+    meta(name="og:description", content=desc)
+    meta(name="twitter:card", content="summary")
+    meta(name="twitter:title", content=page.title)
+    meta(name="twitter:description", content=desc)
+    link(rel="canonical", href=canonical)
+
 
 block container
     include mixins/post

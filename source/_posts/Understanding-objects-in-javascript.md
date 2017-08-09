@@ -1,6 +1,7 @@
 ---
 title: Understanding objects in javascript
 date: 2017-08-06 13:23:58
+desc: "Javascript deals with objects in a very loose way, and the more time you spend working with it, more quirks you will find that you will need to get used to. What confuses most developers is how inheritance works, it's very different than most languages."
 tags:
   - javascript
   - object-oriented
