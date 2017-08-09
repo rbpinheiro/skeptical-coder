@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://rbpinheiro.github.io/"/>
-  <updated>2017-08-08T03:35:41.000Z</updated>
+  <updated>2017-08-09T01:29:41.000Z</updated>
   <id>https://rbpinheiro.github.io/</id>
   
   <author>
@@ -17,14 +17,14 @@
   
   <entry>
     <title>Understanding objects in javascript</title>
-    <link href="https://rbpinheiro.github.io/blog/2017/08/06/Understanding-objects-in-javascript/"/>
-    <id>https://rbpinheiro.github.io/blog/2017/08/06/Understanding-objects-in-javascript/</id>
+    <link href="https://rbpinheiro.github.io/2017/08/06/Understanding-objects-in-javascript/"/>
+    <id>https://rbpinheiro.github.io/2017/08/06/Understanding-objects-in-javascript/</id>
     <published>2017-08-06T16:23:58.000Z</published>
-    <updated>2017-08-08T03:35:41.000Z</updated>
+    <updated>2017-08-09T01:29:41.000Z</updated>
     
     <content type="html"><![CDATA[<p>I wrote this post for those who are already familiar with object-oriented programming, and the intention is to explain language-especific implementations.</p>
 <p>Javascript deals with objects in a very loose way, and the more time you spend working with it, more quirks you will find that you will need to get used to. What confuses most developers is how inheritance works, it’s very different than most languages.<br>ES6 introduced a more classical approach to inheritance and will probably be easier to understand if you are struggling.<br>I will show you the newly available classical approach and the regular way of doing it in javascript, then a few other things you should know about objects.</p>
-<img src="/blog/blog/2017/08/06/Understanding-objects-in-javascript/main.png" alt="[ES6 classical syntax-sugar vs Prototype]" title="[ES6 classical syntax-sugar vs Prototype]">
+<img src="/blog/2017/08/06/Understanding-objects-in-javascript/main.png" alt="[ES6 classical syntax-sugar vs Prototype]" title="[ES6 classical syntax-sugar vs Prototype]">
 <a id="more"></a>
 <h2 id="ES6-classical-syntax-sugar"><a href="#ES6-classical-syntax-sugar" class="headerlink" title="ES6 classical syntax-sugar"></a>ES6 classical syntax-sugar</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(type = 'Animal') &#123;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  printType() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.type);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>(<span class="string">'Cat'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  meow() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'meow'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> animal = <span class="keyword">new</span> Animal();</div><div class="line"><span class="keyword">const</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"></div><div class="line">animal.printType();</div><div class="line"><span class="comment">// "Animal"</span></div><div class="line"></div><div class="line">cat.printType();</div><div class="line"><span class="comment">// "Cat"</span></div><div class="line"></div><div class="line">cat.meow();</div><div class="line"><span class="comment">// "meow"</span></div><div class="line"></div><div class="line">animal.meow();</div><div class="line"><span class="comment">// TypeError: animal.meow is not a function</span></div></pre></td></tr></table></figure>
 <p>It’s pretty straight forward if you are used to a classic inheritance model. The ‘class’ keyword is used to define a class that we can create new instances from. The ‘extends’ keyword is used to define inheritances, a way to use the previous class and add or modify stuff while keeping the original class untouched. The ‘new’ keyword is used to create a new instance of a class.<br>In most classic inheritance languages the instance is an object, and the class is something different, it’s just a blueprint for the instances. Javascript doesn’t really have the concept of a class in that sense. The ‘class’ keyword here will actually be creating a function with a prototype, and that’s why I said it’s a syntax-sugar.</p>
@@ -52,7 +52,7 @@
     
       &lt;p&gt;I wrote this post for those who are already familiar with object-oriented programming, and the intention is to explain language-especific implementations.&lt;/p&gt;
 &lt;p&gt;Javascript deals with objects in a very loose way, and the more time you spend working with it, more quirks you will find that you will need to get used to. What confuses most developers is how inheritance works, it’s very different than most languages.&lt;br&gt;ES6 introduced a more classical approach to inheritance and will probably be easier to understand if you are struggling.&lt;br&gt;I will show you the newly available classical approach and the regular way of doing it in javascript, then a few other things you should know about objects.&lt;/p&gt;
-&lt;img src=&quot;/blog/blog/2017/08/06/Understanding-objects-in-javascript/main.png&quot; alt=&quot;[ES6 classical syntax-sugar vs Prototype]&quot; title=&quot;[ES6 classical syntax-sugar vs Prototype]&quot;&gt;
+&lt;img src=&quot;/blog/2017/08/06/Understanding-objects-in-javascript/main.png&quot; alt=&quot;[ES6 classical syntax-sugar vs Prototype]&quot; title=&quot;[ES6 classical syntax-sugar vs Prototype]&quot;&gt;
     
     </summary>
     
@@ -69,8 +69,8 @@
   
   <entry>
     <title>Review your code</title>
-    <link href="https://rbpinheiro.github.io/blog/2016/04/08/Review-your-code/"/>
-    <id>https://rbpinheiro.github.io/blog/2016/04/08/Review-your-code/</id>
+    <link href="https://rbpinheiro.github.io/2016/04/08/Review-your-code/"/>
+    <id>https://rbpinheiro.github.io/2016/04/08/Review-your-code/</id>
     <published>2016-04-08T16:37:33.000Z</published>
     <updated>2017-08-06T15:33:43.000Z</updated>
     
@@ -113,8 +113,8 @@
   
   <entry>
     <title>Netflix to save the world</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/12/03/Netflix-to-save-the-world/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/12/03/Netflix-to-save-the-world/</id>
+    <link href="https://rbpinheiro.github.io/2015/12/03/Netflix-to-save-the-world/"/>
+    <id>https://rbpinheiro.github.io/2015/12/03/Netflix-to-save-the-world/</id>
     <published>2015-12-03T02:18:41.000Z</published>
     <updated>2017-08-06T05:09:07.000Z</updated>
     
@@ -152,8 +152,8 @@
   
   <entry>
     <title>Writing readable code</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/17/Writing-readable-code/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/17/Writing-readable-code/</id>
+    <link href="https://rbpinheiro.github.io/2015/11/17/Writing-readable-code/"/>
+    <id>https://rbpinheiro.github.io/2015/11/17/Writing-readable-code/</id>
     <published>2015-11-17T19:32:37.000Z</published>
     <updated>2017-08-06T15:44:16.000Z</updated>
     
@@ -209,8 +209,8 @@
   
   <entry>
     <title>Why I am an atheist</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/14/Why-I-am-an-atheist/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/14/Why-I-am-an-atheist/</id>
+    <link href="https://rbpinheiro.github.io/2015/11/14/Why-I-am-an-atheist/"/>
+    <id>https://rbpinheiro.github.io/2015/11/14/Why-I-am-an-atheist/</id>
     <published>2015-11-14T22:38:30.000Z</published>
     <updated>2017-08-06T04:57:21.000Z</updated>
     
@@ -253,8 +253,8 @@
   
   <entry>
     <title>Would you tell me, please, which way I ought to go from here?</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/</id>
+    <link href="https://rbpinheiro.github.io/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/"/>
+    <id>https://rbpinheiro.github.io/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/</id>
     <published>2015-11-11T15:09:46.000Z</published>
     <updated>2017-08-06T16:04:23.000Z</updated>
     
