@@ -7,6 +7,7 @@ date: 2016-04-08 13:37:33
 ---
 
 As I finish writing this post, I will review it to check if I can structure it better or if I need to improve the way I am explaining my ideas, and of course for typos and mistakes. This should be the way you write code as well. You are not done when your code works, you are done when your code looks nice.
+{% asset_img code-review.gif [Code review] %}
 
 How many characters in length do you let your lines go? How well do you organise your code? Is your code open to future demands in features or will the team have to rewrite most of it from scratch? Take some pride on how your code looks.
 

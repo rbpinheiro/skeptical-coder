@@ -57,6 +57,9 @@
         color: #42b983;
         word-break: break-all;
     }
+    a#more+br {
+        display: none;
+    }
     blockquote {
         margin: 2em 0;
         padding-left: 20px;

@@ -5,8 +5,8 @@ block site_title
 
 block description
     - var desc = page.desc || page.title + ' - ' + config.author;
-    - var tags = page.tags.data.map(tag => tag.name).join(', ')
-    - var canonical = config.url + page.path
+    - var tags = page.tags.data.map(tag => tag.name).join(', ');
+    - var canonical = `${config.url}/${page.path}`;
     meta(name="author", content=config.author)
     != open_graph()
     link(rel="canonical", href=canonical)

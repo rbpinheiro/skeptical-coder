@@ -9,9 +9,26 @@ mixin home()
 
 mixin post()
     - var prev = page.prev ? page.prev.path : false;
-    - var next = page.next ? page.next.path : false; 
+    - var next = page.next ? page.next.path : false;
+
     .paginator
         if prev
-            a.prev(href=url_for(prev))!= __('prev_post')
+            a.prev(href=url_for(prev))
+                - var img = page.prev.content.match(/<img[^>]+src="([^">]+)"/);
+                span.label!=page.prev.title
+                if img
+                    .img_wrapper
+                        img.post_img(src=img[1] alt=page.prev.title)
+                else
+                    .img_wrapper
+                        img.post_img(src=url_for(theme.logo_big) alt=page.prev.title)
         if next
-            a.next(href=url_for(next))!= __('next_post')
+            a.next(href=url_for(next))
+                - var img = page.next.content.match(/<img[^>]+src="([^">]+)"/);
+                span.label!=page.next.title
+                if img
+                    .img_wrapper
+                        img.post_img(src=img[1] alt=page.next.title)
+                else
+                    .img_wrapper
+                        img.post_img(src=url_for(theme.logo_big) alt=page.next.title)
