@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Rafael Pinheiro</title>
   
-  <link href="/blog/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://rbpinheiro.github.io/blog/"/>
+  <link href="http://skeptical-coder.js.org/"/>
   <updated>2017-08-13T05:23:34.000Z</updated>
-  <id>https://rbpinheiro.github.io/blog/</id>
+  <id>http://skeptical-coder.js.org/</id>
   
   <author>
     <name>Rafael Pinheiro</name>
@@ -17,13 +17,13 @@
   
   <entry>
     <title>Understanding objects in javascript</title>
-    <link href="https://rbpinheiro.github.io/blog/2017/08/06/Understanding-objects-in-javascript/"/>
-    <id>https://rbpinheiro.github.io/blog/2017/08/06/Understanding-objects-in-javascript/</id>
+    <link href="http://skeptical-coder.js.org/2017/08/06/Understanding-objects-in-javascript/"/>
+    <id>http://skeptical-coder.js.org/2017/08/06/Understanding-objects-in-javascript/</id>
     <published>2017-08-06T16:23:58.000Z</published>
     <updated>2017-08-13T05:23:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>I wrote this post for those who are already familiar with object-oriented programming, and the intention is to explain language-especific implementations.</p>
-<img src="/blog/2017/08/06/Understanding-objects-in-javascript/main.png" alt="[ES6 classical syntax-sugar vs Prototype]" title="[ES6 classical syntax-sugar vs Prototype]">
+<img src="/2017/08/06/Understanding-objects-in-javascript/main.png" alt="[ES6 classical syntax-sugar vs Prototype]" title="[ES6 classical syntax-sugar vs Prototype]">
 <p>Javascript deals with objects in a very loose way, and the more time you spend working with it, more quirks you will find that you will need to get used to. What confuses most developers is how inheritance works, it’s very different than most languages.<br>ES6 introduced a more classical approach to inheritance and will probably be easier to understand if you are struggling.<br>I will show you the newly available classical approach and the regular way of doing it in javascript, then a few other things you should know about objects.<br><a id="more"></a></p>
 <h2 id="ES6-classical-syntax-sugar"><a href="#ES6-classical-syntax-sugar" class="headerlink" title="ES6 classical syntax-sugar"></a>ES6 classical syntax-sugar</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(type = 'Animal') &#123;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  printType() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.type);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>(<span class="string">'Cat'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  meow() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'meow'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> animal = <span class="keyword">new</span> Animal();</div><div class="line"><span class="keyword">const</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"></div><div class="line">animal.printType();</div><div class="line"><span class="comment">// "Animal"</span></div><div class="line"></div><div class="line">cat.printType();</div><div class="line"><span class="comment">// "Cat"</span></div><div class="line"></div><div class="line">cat.meow();</div><div class="line"><span class="comment">// "meow"</span></div><div class="line"></div><div class="line">animal.meow();</div><div class="line"><span class="comment">// TypeError: animal.meow is not a function</span></div></pre></td></tr></table></figure>
 <p>It’s pretty straight forward if you are used to a classic inheritance model. The ‘class’ keyword is used to define a class that we can create new instances from. The ‘extends’ keyword is used to define inheritances, a way to use the previous class and add or modify stuff while keeping the original class untouched. The ‘new’ keyword is used to create a new instance of a class.<br>In most classic inheritance languages the instance is an object, and the class is something different, it’s just a blueprint for the instances. Javascript doesn’t really have the concept of a class in that sense. The ‘class’ keyword here will actually be creating a function with a prototype, and that’s why I said it’s a syntax-sugar.</p>
@@ -50,30 +50,30 @@
     <summary type="html">
     
       &lt;p&gt;I wrote this post for those who are already familiar with object-oriented programming, and the intention is to explain language-especific implementations.&lt;/p&gt;
-&lt;img src=&quot;/blog/2017/08/06/Understanding-objects-in-javascript/main.png&quot; alt=&quot;[ES6 classical syntax-sugar vs Prototype]&quot; title=&quot;[ES6 classical syntax-sugar vs Prototype]&quot;&gt;
+&lt;img src=&quot;/2017/08/06/Understanding-objects-in-javascript/main.png&quot; alt=&quot;[ES6 classical syntax-sugar vs Prototype]&quot; title=&quot;[ES6 classical syntax-sugar vs Prototype]&quot;&gt;
 &lt;p&gt;Javascript deals with objects in a very loose way, and the more time you spend working with it, more quirks you will find that you will need to get used to. What confuses most developers is how inheritance works, it’s very different than most languages.&lt;br&gt;ES6 introduced a more classical approach to inheritance and will probably be easier to understand if you are struggling.&lt;br&gt;I will show you the newly available classical approach and the regular way of doing it in javascript, then a few other things you should know about objects.&lt;br&gt;
     
     </summary>
     
     
-      <category term="javascript" scheme="https://rbpinheiro.github.io/blog/tags/javascript/"/>
+      <category term="javascript" scheme="http://skeptical-coder.js.org/tags/javascript/"/>
     
-      <category term="object-oriented" scheme="https://rbpinheiro.github.io/blog/tags/object-oriented/"/>
+      <category term="object-oriented" scheme="http://skeptical-coder.js.org/tags/object-oriented/"/>
     
-      <category term="prototype" scheme="https://rbpinheiro.github.io/blog/tags/prototype/"/>
+      <category term="prototype" scheme="http://skeptical-coder.js.org/tags/prototype/"/>
     
-      <category term="ES6" scheme="https://rbpinheiro.github.io/blog/tags/ES6/"/>
+      <category term="ES6" scheme="http://skeptical-coder.js.org/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>Review your code</title>
-    <link href="https://rbpinheiro.github.io/blog/2016/04/08/Review-your-code/"/>
-    <id>https://rbpinheiro.github.io/blog/2016/04/08/Review-your-code/</id>
+    <link href="http://skeptical-coder.js.org/2016/04/08/Review-your-code/"/>
+    <id>http://skeptical-coder.js.org/2016/04/08/Review-your-code/</id>
     <published>2016-04-08T16:37:33.000Z</published>
     <updated>2017-08-13T05:22:13.000Z</updated>
     
-    <content type="html"><![CDATA[<p>As I finish writing this post, I will review it to check if I can structure it better or if I need to improve the way I am explaining my ideas, and of course for typos and mistakes. This should be the way you write code as well. You are not done when your code works, you are done when your code looks nice.<br><img src="/blog/2016/04/08/Review-your-code/code-review.gif" alt="[Code review]" title="[Code review]"></p>
+    <content type="html"><![CDATA[<p>As I finish writing this post, I will review it to check if I can structure it better or if I need to improve the way I am explaining my ideas, and of course for typos and mistakes. This should be the way you write code as well. You are not done when your code works, you are done when your code looks nice.<br><img src="/2016/04/08/Review-your-code/code-review.gif" alt="[Code review]" title="[Code review]"></p>
 <p>How many characters in length do you let your lines go? How well do you organise your code? Is your code open to future demands in features or will the team have to rewrite most of it from scratch? Take some pride on how your code looks.</p>
 <p>Other people will see it and you might need to work on it again. When coming back to fix a bug you are not in the same mindset you were when first spending hours or days working on that feature. Review your code to leave it for the future you, so you can read it easily enough.</p>
 <p>By spending some extra time reviewing what you did when your focus was to develop the logic of how things would work and taking care of bugs, you can focus on other important stuff. Did you miss a situation where a bug might show up later? Is your code good enough in case you need to extend it later?<br><a id="more"></a></p>
@@ -96,7 +96,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;As I finish writing this post, I will review it to check if I can structure it better or if I need to improve the way I am explaining my ideas, and of course for typos and mistakes. This should be the way you write code as well. You are not done when your code works, you are done when your code looks nice.&lt;br&gt;&lt;img src=&quot;/blog/2016/04/08/Review-your-code/code-review.gif&quot; alt=&quot;[Code review]&quot; title=&quot;[Code review]&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;As I finish writing this post, I will review it to check if I can structure it better or if I need to improve the way I am explaining my ideas, and of course for typos and mistakes. This should be the way you write code as well. You are not done when your code works, you are done when your code looks nice.&lt;br&gt;&lt;img src=&quot;/2016/04/08/Review-your-code/code-review.gif&quot; alt=&quot;[Code review]&quot; title=&quot;[Code review]&quot;&gt;&lt;/p&gt;
 &lt;p&gt;How many characters in length do you let your lines go? How well do you organise your code? Is your code open to future demands in features or will the team have to rewrite most of it from scratch? Take some pride on how your code looks.&lt;/p&gt;
 &lt;p&gt;Other people will see it and you might need to work on it again. When coming back to fix a bug you are not in the same mindset you were when first spending hours or days working on that feature. Review your code to leave it for the future you, so you can read it easily enough.&lt;/p&gt;
 &lt;p&gt;By spending some extra time reviewing what you did when your focus was to develop the logic of how things would work and taking care of bugs, you can focus on other important stuff. Did you miss a situation where a bug might show up later? Is your code good enough in case you need to extend it later?&lt;br&gt;
@@ -104,16 +104,16 @@
     </summary>
     
     
-      <category term="javascript" scheme="https://rbpinheiro.github.io/blog/tags/javascript/"/>
+      <category term="javascript" scheme="http://skeptical-coder.js.org/tags/javascript/"/>
     
-      <category term="good-practices" scheme="https://rbpinheiro.github.io/blog/tags/good-practices/"/>
+      <category term="good-practices" scheme="http://skeptical-coder.js.org/tags/good-practices/"/>
     
   </entry>
   
   <entry>
     <title>Netflix to save the world</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/12/03/Netflix-to-save-the-world/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/12/03/Netflix-to-save-the-world/</id>
+    <link href="http://skeptical-coder.js.org/2015/12/03/Netflix-to-save-the-world/"/>
+    <id>http://skeptical-coder.js.org/2015/12/03/Netflix-to-save-the-world/</id>
     <published>2015-12-03T02:18:41.000Z</published>
     <updated>2017-08-06T05:09:07.000Z</updated>
     
@@ -141,18 +141,18 @@
     </summary>
     
     
-      <category term="disruptiveness" scheme="https://rbpinheiro.github.io/blog/tags/disruptiveness/"/>
+      <category term="disruptiveness" scheme="http://skeptical-coder.js.org/tags/disruptiveness/"/>
     
-      <category term="information" scheme="https://rbpinheiro.github.io/blog/tags/information/"/>
+      <category term="information" scheme="http://skeptical-coder.js.org/tags/information/"/>
     
-      <category term="streaming" scheme="https://rbpinheiro.github.io/blog/tags/streaming/"/>
+      <category term="streaming" scheme="http://skeptical-coder.js.org/tags/streaming/"/>
     
   </entry>
   
   <entry>
     <title>Writing readable code</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/17/Writing-readable-code/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/17/Writing-readable-code/</id>
+    <link href="http://skeptical-coder.js.org/2015/11/17/Writing-readable-code/"/>
+    <id>http://skeptical-coder.js.org/2015/11/17/Writing-readable-code/</id>
     <published>2015-11-17T19:32:37.000Z</published>
     <updated>2017-08-06T15:44:16.000Z</updated>
     
@@ -198,18 +198,18 @@
     </summary>
     
     
-      <category term="good-practices" scheme="https://rbpinheiro.github.io/blog/tags/good-practices/"/>
+      <category term="good-practices" scheme="http://skeptical-coder.js.org/tags/good-practices/"/>
     
-      <category term="programming" scheme="https://rbpinheiro.github.io/blog/tags/programming/"/>
+      <category term="programming" scheme="http://skeptical-coder.js.org/tags/programming/"/>
     
-      <category term="bugs" scheme="https://rbpinheiro.github.io/blog/tags/bugs/"/>
+      <category term="bugs" scheme="http://skeptical-coder.js.org/tags/bugs/"/>
     
   </entry>
   
   <entry>
     <title>Why I am an atheist</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/14/Why-I-am-an-atheist/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/14/Why-I-am-an-atheist/</id>
+    <link href="http://skeptical-coder.js.org/2015/11/14/Why-I-am-an-atheist/"/>
+    <id>http://skeptical-coder.js.org/2015/11/14/Why-I-am-an-atheist/</id>
     <published>2015-11-14T22:38:30.000Z</published>
     <updated>2017-08-06T04:57:21.000Z</updated>
     
@@ -242,18 +242,18 @@
     </summary>
     
     
-      <category term="religion" scheme="https://rbpinheiro.github.io/blog/tags/religion/"/>
+      <category term="religion" scheme="http://skeptical-coder.js.org/tags/religion/"/>
     
-      <category term="atheism" scheme="https://rbpinheiro.github.io/blog/tags/atheism/"/>
+      <category term="atheism" scheme="http://skeptical-coder.js.org/tags/atheism/"/>
     
-      <category term="humanism" scheme="https://rbpinheiro.github.io/blog/tags/humanism/"/>
+      <category term="humanism" scheme="http://skeptical-coder.js.org/tags/humanism/"/>
     
   </entry>
   
   <entry>
     <title>Would you tell me, please, which way I ought to go from here?</title>
-    <link href="https://rbpinheiro.github.io/blog/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/"/>
-    <id>https://rbpinheiro.github.io/blog/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/</id>
+    <link href="http://skeptical-coder.js.org/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/"/>
+    <id>http://skeptical-coder.js.org/2015/11/11/Would-you-tell-me-please-which-way-I-ought-to-go-from-here/</id>
     <published>2015-11-11T15:09:46.000Z</published>
     <updated>2017-08-06T16:04:23.000Z</updated>
     
@@ -282,11 +282,11 @@
     </summary>
     
     
-      <category term="learning" scheme="https://rbpinheiro.github.io/blog/tags/learning/"/>
+      <category term="learning" scheme="http://skeptical-coder.js.org/tags/learning/"/>
     
-      <category term="career-advice" scheme="https://rbpinheiro.github.io/blog/tags/career-advice/"/>
+      <category term="career-advice" scheme="http://skeptical-coder.js.org/tags/career-advice/"/>
     
-      <category term="software-development" scheme="https://rbpinheiro.github.io/blog/tags/software-development/"/>
+      <category term="software-development" scheme="http://skeptical-coder.js.org/tags/software-development/"/>
     
   </entry>
   
